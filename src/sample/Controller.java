@@ -9,13 +9,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import java.net.URL;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class Controller implements Initializable {
 
-    ObservableList patients = FXCollections.observableArrayList();
+    ArrayList<Patient> patients = new ArrayList<>();
     ObservableList choiceList = FXCollections.observableArrayList();
 
     public void dataSort() {
@@ -29,34 +27,34 @@ public class Controller implements Initializable {
     }
 
     public void sortByNames() {
-        Collections.sort(patients);
+        patients.sort(Comparator.comparing(Patient::getName));
         for(int i = 0; i < patients.size(); i++) {
-            System.out.println("{\n\t\"imie\": \"" + name.getText() + "\",\n\t\"nazwisko\": \"" + lastName.getText() +
-                    "\",\n\t\"wiek\": \"" + age.getText() + "\"\n}");
+            System.out.println("{\n\t\"imie\": \"" + patients.get(i).getName() + "\",\n\t\"nazwisko\": \"" +
+                    patients.get(i).getLastName() + "\",\n\t\"wiek\": \"" + patients.get(i).getAge() + "\"\n}");
         }
     }
 
     public void sortByLastName() {
         patients.sort(Comparator.comparing(Patient::getLastName));
         for(int i = 0; i < patients.size(); i++) {
-            System.out.println("{\n\t\"imie\": \"" + name.getText() + "\",\n\t\"nazwisko\": \"" + lastName.getText() +
-                    "\",\n\t\"wiek\": \"" + age.getText() + "\"\n}");
+            System.out.println("{\n\t\"imie\": \"" + patients.get(i).getName() + "\",\n\t\"nazwisko\": \"" +
+                    patients.get(i).getLastName() + "\",\n\t\"wiek\": \"" + patients.get(i).getAge() + "\"\n}");
         }
     }
 
     public void sortByAges() {
         patients.sort(Comparator.comparing(Patient::getAge));
         for(int i = 0; i < patients.size(); i++) {
-            System.out.println("{\n\t\"imie\": \"" + name.getText() + "\",\n\t\"nazwisko\": \"" + lastName.getText() +
-                    "\",\n\t\"wiek\": \"" + age.getText() + "\"\n}");
+            System.out.println("{\n\t\"imie\": \"" + patients.get(i).getName() + "\",\n\t\"nazwisko\": \"" +
+                    patients.get(i).getLastName() + "\",\n\t\"wiek\": \"" + patients.get(i).getAge() + "\"\n}");
         }
     }
 
     public void sortById() {
-        for(int i = 0; i < patients.size(); i++) {
-            System.out.println("{\n\t\"imie\": \"" + name.getText() + "\",\n\t\"nazwisko\": \"" + lastName.getText() +
-                    "\",\n\t\"wiek\": \"" + age.getText() + "\"\n}");
-        }
+        for (Patient patient : patients) {
+            System.out.println("{\n\t\"imie\": \"" + patient.getName() + "\",\n\t\"nazwisko\": \"" +
+                    patient.getLastName() + "\",\n\t\"wiek\": \"" + patient.getAge() + "\"\n}");
+         }
     }
 
     @FXML

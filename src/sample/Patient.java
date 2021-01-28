@@ -12,15 +12,15 @@ public class Patient implements Comparable <Patient> {
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public String getLastName() {
-        return this.lastName;
+        return lastName;
     }
 
     public int getAge() {
-        return this.age;
+        return age;
     }
 
     @Override
